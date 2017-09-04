@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport">
+    <title>七夕时节</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="Pattern.css" />
+    <script>
+        function draw(img) {
+		    $("#myCanvas").fadeIn(11000);
+            var c=document.getElementById("myCanvas");
+            var ctx=c.getContext("2d");
+            ctx.drawImage(img,0,0);
+            //ctx.fillStyle="#FF0000";
+            //ctx.fillRect(0,0,1366,768);
+            //图片整体和外框集体消失
+            setTimeout($("#myCanvas").fadeOut(10000),20000);
+            setTimeout($("#finalWord").fadeIn(30000),40000);
+        }
+        var img=new Image();
+        img.src="backpi.jpg";
+        var str = '亲爱的<br/>' +
+            '今年七夕也没能来陪你<br/>' +
+            '在外面的日子，' +
+            '有时让人感到非常孤单<br/>' +
+            '但是每次和你说话<br/>却又陷入淡淡的温暖之中<br/>' +
+            '虽然经常把你惹毛<br/>' +
+            '虽然有过' +
+            '一些不愉快<br/>' +
+            '但是<br/>' +
+            '遇到你真的很开心<br/>' +
+            '喜欢和你聊八卦<br/>' +
+            '喜欢和你相互吐槽<br/>' +
+            '喜欢和你一起在街上走回家,' +
+            '喜欢和你一起吃得饱饱的 <br/>' +
+            '然后一起苦苦减肥<br/>' +
+            '一起看恐怖传闻，' +
+            '然后自己吓成一团<br/>' +
+            '还记得第一次b站直播<br/>' +
+            '两个人都被吓得惊慌失措<br/>' +
+            '当然还有按着毛霸天给她洗澡' +
+            '<br/>' +
+            '虽然很少大方地说我爱你<br/>' +
+            '但是真的发现可能再也见不到你的时候<br/>' +
+            '却感到彷徨无助<br/>' +
+            '喜欢你' +
+            '<br/>' +
+            '我爱你<br/>明年的这个时候<br/>' +
+            '我就能牵着你的手度过了吧<br/>' +
+            '亲爱的<br/>' +
+            '七夕' +
+            '快乐';
+        var i = 0;
+        function typing(){ //用来进行自动打字的函数，需要打字的正文放在上面
+            var divTyping = document.getElementById('text');
+
+            if (i < str.length) {
+                divTyping.innerHTML = str.slice(0, i++) + '_';
+                setTimeout('typing()', 400);//递归调用
+            }
+            else{
+                //$("#round").fadeIn(5000);
+                setTimeout('draw(img)'	,8000);
+                divTyping.innerHTML = str;//结束打字,移除 _ 光标
+				$("#text").fadeOut("7500");//上方文字消失 
+            }
+        }
+		
+		document.addEventListener('touchstart', function () {
+			document.getElementsByTagName('audio')[0].play();
+			document.getElementsByTagName('audio')[0].pause();
+		});
+		
+        var timeNum=3;
+        function timeReady(){
+            if (timeNum<0){
+                typing();
+                $("#num").fadeOut("slow");
+                $(document).ready(function(){ //使用jquery缓慢加载剩下的内容
+
+                        $("#text").fadeIn(1000);
+                });
+                return; 
+            }
+            document.getElementById('num').innerHTML=timeNum;
+            timeNum--;
+            setTimeout('timeReady()',600);
+        }
+    </script>
+</head>
+<body id="mainbody" onload="timeReady()" >
+<audio  controls="controls" autoplay="autoplay">
+    <source src="Everything's Alright.mp3" type="audio/mpeg">
+</audio>
+<h1 id="num">3</h1>
+<p id ="text" style="display:none;"></p>
+      <!--  <button onclick="typing()">开始打字</button> -->
+    <canvas   id="myCanvas" width=1280px height=760px alt="加载失败"
+            style="display:none;border:1px solid #000000;">
+    </canvas>
+<p id="finalWord" class="lastword" >我遇见的人<br/>是你<br/>真好</p>
+<!--<img src="flower.png">-->
+</body>
+</html>

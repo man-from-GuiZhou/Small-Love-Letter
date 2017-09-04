@@ -1,0 +1,58 @@
+
+h1{
+    text-align: center;
+    font-size: 100px;
+    color: deepskyblue;
+}
+
+ /*卡片上的文字的效果*/
+div.header {
+    background-color: #af72a4;
+    color: #fdfffd;
+    padding: 10px;
+    font-size: 40px;
+    border-radius:90px;
+}
+div.card {
+    border-radius:90px;
+    margin: auto    ;
+    width: 300px;
+    /*width: 250px;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}/*文字卡片实现*/
+
+
+ body{
+     background:url(tothemoon.jpg);
+     background-repeat:no-repeat;
+     background-size: 1366px,960px;
+ }
+
+ p{
+     /*text-align: center;*/
+     color: #fdfffd; 
+	 font-family:FZShuTi;
+ }
+
+ p.lastword{
+     color: #fdfffd;
+     text-align: center;
+     font-size: 50px;
+     display: none;
+     text-shadow: 5px 5px 5px #fff88d;
+ }
+
+ audio{
+     display: none;
+ }
+
+div#round
+{
+    　width:100vh;
+    　height:100vh;
+    border:40px solid transparent;
+    -webkit-border-image:url(meitu.png) 240 240 round; /* Safari 5 and older */
+    -o-border-image:url(meitu.png) 240 240 round; /* Opera */
+    border-image:url(meitu.png) 240 240 round;
+}
